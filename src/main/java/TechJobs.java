@@ -119,7 +119,25 @@ public class TechJobs {
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
+//      Need to iterate through an arraylist of hashmaps
+//      Use Map.Entry<> the nested iteration (hashmaps)
+        if (someJobs.size() == 0) {
+            System.out.println("No Results");
+//            figure out how to eliminate the space underneath here
+        } else {
+//          loop through the arraylist first (to access a hashmap at a time
+            for (int i = 0; i < someJobs.size(); i++) {
+                System.out.println("*****");
+//              now loop through each key/value entry of the selected hashmap
+                for (Map.Entry<String, String> entry : someJobs.get(i).entrySet()) {
+//                  print out key: value of the selected hashmap
 
-        System.out.println("printJobs is not implemented yet");
+                    System.out.println(entry.getKey() +": " + entry.getValue());
+                }
+                System.out.println("*****\n");
+//                System.out.println("\n");
+            }
+        }
+//        System.out.println("printJobs is not implemented yet");
     }
 }
