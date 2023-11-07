@@ -5,10 +5,8 @@ import org.apache.commons.csv.CSVRecord;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.lang.reflect.Array;
+import java.util.*;
 
 /**
  * Created by LaunchCode
@@ -95,7 +93,25 @@ public class JobData {
         loadData();
 
         // TODO - implement this method
-        return null;
+//        iterate through the arraylist of hashmaps
+//        find the value of the key/value pair(set)
+//        return all the jobs CONTAINing that value (no repeats: rows and columns!!)
+//        model after ColumnAndValue
+
+//      empty arraylist of hashmaps for your search results to go in. return this arraylist
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+
+//        use search term String to look at full job(row) in all the jobs
+        for(HashMap<String, String> row : allJobs) {
+//            look at key and value of each row hashmap (job description)
+            for(Map.Entry<String, String> entry : row.entrySet()) {
+                String search = entry.getValue();
+                if(search.contains(value)) {
+                    jobs.add(row);
+                }
+            }
+        }
+        return jobs;
     }
 
     /**
